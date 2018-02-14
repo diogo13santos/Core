@@ -1,5 +1,4 @@
-﻿using Core.Domain.Entities;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Core.MVC.ViewModels
@@ -33,6 +32,6 @@ namespace Core.MVC.ViewModels
 
         public int RoleId { get; set; }
 
-        //public virtual Role Role { get; set; }
+        public virtual RoleViewModel Role { get; set; }
     }
 }

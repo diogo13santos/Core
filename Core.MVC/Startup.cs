@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Infra.Data.Context;
+﻿using Core.Infra.Data.Context;
+using Core.MVC.Utility.Profile;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +24,14 @@ namespace Core.MVC
                 .AddUnitOfWork<CoreContext>();
 
             services.AddMvc();
+
+            var config = new AutoMapper.MapperConfiguration(c =>
+            {
+                c.AddProfile(new ApplicationProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
